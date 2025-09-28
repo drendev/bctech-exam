@@ -1,0 +1,58 @@
+# Visual Studio Code
+.vscode/
+.history/
+*.code-workspace
+.vs/
+
+# Build results
+[Bb]in/
+[Oo]bj/
+[Ll]og/
+[Ll]ogs/
+[Dd]ebug/
+[Rr]elease/
+x64/
+x86/
+[Aa][Rr][Mm]/
+[Aa][Rr][Mm]64/
+
+# User-specific files
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Rider / JetBrains
+.idea/
+*.sln.iml
+
+# NuGet
+*.nupkg
+*.snupkg
+packages/
+.nuget/
+project.lock.json
+
+# Dotnet tools
+*.dotCover
+*.dotsettings
+
+# Others
+*.dbmdl
+*.bak
+*.backup
+*.log
+*.dmp
+*.tmp
+*.temp
+
+# VS test results
+TestResult*/
+[Bb]uild[Ll]og.*
+*.trx
+*.coverage
+*.coveragexml
+
+# Generated files
+Generated_Code/
+_ServiceReferences/
