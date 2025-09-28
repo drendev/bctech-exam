@@ -4,12 +4,23 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 17.11.35327.3
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ApiEndPoint", "ApiEndPoint\ApiEndPoint.csproj", "{7BEB0F27-BB71-4CD4-8D13-5A6C39DC9BDB}"
+	ProjectSection(ProjectDependencies) = postProject
+		{7C960361-79E4-455E-A6DD-F063FAFE2C21} = {7C960361-79E4-455E-A6DD-F063FAFE2C21}
+		{C6A76573-95C0-4AB5-B653-678BA5B79B9B} = {C6A76573-95C0-4AB5-B653-678BA5B79B9B}
+	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Application", "Application\Application.csproj", "{7C960361-79E4-455E-A6DD-F063FAFE2C21}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Application", "Application\Application.csproj", "{7C960361-79E4-455E-A6DD-F063FAFE2C21}"
+	ProjectSection(ProjectDependencies) = postProject
+		{ADA25039-FB82-459A-849F-F3A32D5E9B0F} = {ADA25039-FB82-459A-849F-F3A32D5E9B0F}
+	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain", "Domain\Domain.csproj", "{ADA25039-FB82-459A-849F-F3A32D5E9B0F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Domain", "Domain\Domain.csproj", "{ADA25039-FB82-459A-849F-F3A32D5E9B0F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure", "Infrastructure\Infrastructure.csproj", "{C6A76573-95C0-4AB5-B653-678BA5B79B9B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure", "Infrastructure\Infrastructure.csproj", "{C6A76573-95C0-4AB5-B653-678BA5B79B9B}"
+	ProjectSection(ProjectDependencies) = postProject
+		{7C960361-79E4-455E-A6DD-F063FAFE2C21} = {7C960361-79E4-455E-A6DD-F063FAFE2C21}
+		{ADA25039-FB82-459A-849F-F3A32D5E9B0F} = {ADA25039-FB82-459A-849F-F3A32D5E9B0F}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
