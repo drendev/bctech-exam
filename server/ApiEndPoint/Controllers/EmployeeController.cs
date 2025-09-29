@@ -12,17 +12,19 @@ namespace ApiEndPoint.Controllers
         private readonly IAddEmployeeService addEmployeeService;
         private readonly IRemoveEmployeeService removeEmployeeService;
         private readonly IUpdateEmployeeService updateEmployeeService;
-
+        private readonly IViewEmployeeService viewEmployeeService;
         public EmployeeController
             (
             IAddEmployeeService addEmployeeService, 
             IRemoveEmployeeService removeEmployeeService,
-            IUpdateEmployeeService updateEmployeeService
+            IUpdateEmployeeService updateEmployeeService,
+            IViewEmployeeService viewEmployeeService
             )
         {
             this.addEmployeeService = addEmployeeService;
             this.removeEmployeeService = removeEmployeeService;
             this.updateEmployeeService = updateEmployeeService;
+            this.viewEmployeeService = viewEmployeeService;
         }
 
         [HttpPost("add-employee")]
@@ -51,6 +53,19 @@ namespace ApiEndPoint.Controllers
             var response = await updateEmployeeService.UpdateEmployeeAsync(updateEmployeeDto);
 
             if (!response.Sucess) return BadRequest(response);
+
+            return Ok(response);
+        }
+
+        [HttpGet("view-employee")]
+        public async Task<ActionResult<ViewEmployeeResponse>> ViewEmployee(EmployeeIdDto employeeIdDto)
+        {
+            var response = await viewEmployeeService.GetEmployeeAsync(employeeIdDto);
+
+            if (!response.Success)
+            {
+                return NotFound(response);
+            }
 
             return Ok(response);
         }

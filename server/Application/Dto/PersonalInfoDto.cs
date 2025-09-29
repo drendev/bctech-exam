@@ -12,7 +12,7 @@ namespace Application.Dto
         public string? LastName { get; set; }
 
         [Required]
-        public DateTime BirthDate { get; set; }
+        public DateTime BirthDate { get; set; } = DateTime.Now;
 
         [Required]
         public string? Gender { get; set; }

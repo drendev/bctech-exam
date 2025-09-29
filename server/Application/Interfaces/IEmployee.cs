@@ -42,4 +42,14 @@ namespace Application.Interfaces
         Task<bool> EmailExistsAsync(int employeeId, string email);
         Task<bool> PhoneNumberExistsAsync(int employeeId, string phoneNumber);
     }
+
+    public interface IViewEmployeeService
+    {
+        Task<ViewEmployeeResponse> GetEmployeeAsync(EmployeeIdDto employeeIdDto);
+    }
+
+    public interface IViewEmployeeRepository
+    {
+        Task<EmployeeDto?> GetAsync(EmployeeIdDto employeeIdDto);
+    }
 }

@@ -27,6 +27,9 @@ namespace Infrastructure.Providers
             services.AddScoped<IUpdateEmployeeService, UpdateEmployeeService>();
             services.AddScoped<IUpdateEmployeeRepository, UpdateEmployeeGateway>();
 
+            services.AddScoped<IViewEmployeeService, ViewEmployeeService>();
+            services.AddScoped<IViewEmployeeRepository, ViewEmployeeGateway>();
+
             return services;
         }
     }

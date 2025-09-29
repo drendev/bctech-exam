@@ -20,6 +20,8 @@ namespace Application.Dto
         [Required]
         public int DepartmentId { get; set; }
 
+        public string DepartmentName { get; set; } = "Test";
+
         [Required]
         public PersonalInfoDto? PersonalInfo { get; set; }
     }
@@ -52,14 +54,4 @@ namespace Application.Dto
         [Required]
         public PersonalInfoDto? PersonalInfo { get; set; }
     }
-
-    public class EmployeeResponseDto
-    {
-        public int? EmployeeId { get; set; }
-        public string? JobTitle { get; set; }
-        public decimal? Salary { get; set; }
-        public int? DepartmentId { get; set; }
-        public PersonalInfoDto? PersonalInfo { get; set; }
-    }
-
 }
