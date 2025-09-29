@@ -54,4 +54,14 @@ namespace Application.Dto
         [Required]
         public PersonalInfoDto? PersonalInfo { get; set; }
     }
+
+    public class EmployeesListDto()
+    {
+        public int EmployeeId { get; set; }
+        public string? FirstName { get; set; }
+        public string? LastName { get; set; }
+        public string? DepartmentName { get; set; }
+        public string? JobTitle { get; set; }
+        public bool IsActive { get; set; }
+    }
 }

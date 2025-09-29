@@ -30,6 +30,9 @@ namespace Infrastructure.Providers
             services.AddScoped<IViewEmployeeService, ViewEmployeeService>();
             services.AddScoped<IViewEmployeeRepository, ViewEmployeeGateway>();
 
+            services.AddScoped<IViewAllEmployeesService, ViewAllEmployeesService>();
+            services.AddScoped<IViewAllEmployeesRepository, ViewAllEmployeesGateway>();
+
             return services;
         }
     }

@@ -52,4 +52,14 @@ namespace Application.Interfaces
     {
         Task<EmployeeDto?> GetAsync(EmployeeIdDto employeeIdDto);
     }
+
+    public interface IViewAllEmployeesService
+    {
+        Task<ViewAllEmployeesResponse> GetAllEmployeesAsync();
+    }
+
+    public interface IViewAllEmployeesRepository
+    {
+        Task<List<EmployeesListDto>> GetAsync();
+    }
 }
