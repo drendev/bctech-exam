@@ -1,3 +1,5 @@
+using Infrastructure.Providers;
+
 namespace ApiEndPoint
 {
     public class Program
@@ -9,15 +11,14 @@ namespace ApiEndPoint
             // Add services to the container.
 
             builder.Services.AddControllers();
+            builder.Services.InfrastructureServices(builder.Configuration);
 
             var app = builder.Build();
 
-            // Configure the HTTP request pipeline.
 
             app.UseHttpsRedirection();
 
-            app.UseAuthorization();
-
+            app.UseRouting();
 
             app.MapControllers();
 
