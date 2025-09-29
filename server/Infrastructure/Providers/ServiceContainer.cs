@@ -20,8 +20,12 @@ namespace Infrastructure.Providers
 
             services.AddScoped<IAddEmployeeService, AddEmployeeService>();
             services.AddScoped<IAddEmployeeRepository, AddEmployeeGateway>();
+
             services.AddScoped<IRemoveEmployeeService, RemoveEmployeeService>();
             services.AddScoped<IRemoveEmployeeRepository, RemoveEmployeeGateway>();
+
+            services.AddScoped<IUpdateEmployeeService, UpdateEmployeeService>();
+            services.AddScoped<IUpdateEmployeeRepository, UpdateEmployeeGateway>();
 
             return services;
         }

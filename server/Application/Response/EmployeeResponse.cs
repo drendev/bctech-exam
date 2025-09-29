@@ -1,6 +1,10 @@
 ﻿
+using Application.Dto;
+using Domain.Models;
+
 namespace Application.Response
 {
     public record AddEmployeeResponse(bool Response, string Message = null!);
     public record RemoveEmployeeResponse(bool Success, string Message = null!);
+    public record UpdateEmployeeResponse(bool Sucess, string Message = null!, UpdateEmployeeDto? employee = null!);
 }
