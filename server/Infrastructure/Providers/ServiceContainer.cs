@@ -33,6 +33,18 @@ namespace Infrastructure.Providers
             services.AddScoped<IViewAllEmployeesService, ViewAllEmployeesService>();
             services.AddScoped<IViewAllEmployeesRepository, ViewAllEmployeesGateway>();
 
+            services.AddScoped<IAddDepartmentService, AddDepartmentService>();
+            services.AddScoped<IAddDepartmentRepository, AddDepartmentGateway>();
+
+            services.AddScoped<IUpdateDepartmentService, UpdateDepartmentService>();
+            services.AddScoped<IUpdateDepartmentRepository, UpdateDepartmentGateway>();
+
+            services.AddScoped<IViewDepartmentService, ViewDepartmentService>();
+            services.AddScoped<IViewDepartmentRepository, ViewDepartmentGateway>();
+
+            services.AddScoped<IViewAllDepartmentService, ViewAllDepartmentService>();
+            services.AddScoped<IViewAllDepartmentRepository, ViewAllDepartmentGateway>();
+
             return services;
         }
     }

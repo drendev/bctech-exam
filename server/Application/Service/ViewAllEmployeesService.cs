@@ -20,7 +20,7 @@ namespace Application.Service
             if (employees == null || !employees.Any())
                 return new ViewAllEmployeesResponse(false, "No employees found.");
 
-            return new ViewAllEmployeesResponse(true, "Employees retrieved successfully", employees);
+            return new ViewAllEmployeesResponse(true, "Employees retrieved successfully", employees!);
         }
     }
 }
