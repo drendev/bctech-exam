@@ -1,0 +1,23 @@
+<div *ngIf="loading">Loading employee...</div>
+
+<div *ngIf="!loading && employee">
+  <h2>Employee Details</h2>
+  <p><strong>Employee Status:</strong> {{ employee.isActive ? 'Yes' : 'No' }}</p>
+  <p><strong>Department:</strong> {{ employee.departmentId }}</p>
+  <p><strong>Job Title:</strong> {{ employee.jobTitle }}</p>
+  <p><strong>Salary:</strong> {{ employee.salary }}</p>
+  <div> Personal Information </div>
+  <p><strong>First Name:</strong> {{ employee.personalInfo.firstName }}</p>
+  <p><strong>Last Name:</strong> {{ employee.personalInfo.lastName }}</p>
+  <p><strong>Gender:</strong> {{ employee.personalInfo.gender }}</p>
+  <p><strong>Address:</strong> {{ employee.personalInfo.address }}</p>
+  <p><strong>Email:</strong> {{ employee.personalInfo.email }}</p>
+  <p><strong>Phone Number:</strong> {{ employee.personalInfo.phoneNumber }}</p>
+</div>
+
+<button (click)="deleteEmployee()" style="margin-top: 10px; background-color: red; color: white;">
+  Delete Employee
+</button>
+
+<a [routerLink]="['/employee/edit', employeeId]" style="margin-left: 10px;">
+  <button style="background-color: blue; color: white;">Edit Employee</button>
