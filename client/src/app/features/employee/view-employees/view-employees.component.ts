@@ -16,6 +16,10 @@ export class ViewEmployeesComponent implements OnInit {
   loading = false;
   error = '';
 
+  // pagination state
+  pageSize = 5;
+  currentPage = 1;
+
   constructor(private employeeService: EmployeeService) {}
 
   ngOnInit() {
@@ -30,10 +34,26 @@ export class ViewEmployeesComponent implements OnInit {
         this.loading = false;
       },
       error: (err) => {
-        this.error = err.message || 'Failed to load employees';
+        this.error = err.error?.message || 'Failed to load employees. Server error.';
         console.error(err);
         this.loading = false;
       }
     });
+  }
+
+  // computed employees for current page
+  get paginatedEmployees(): EmployeeListItem[] {
+    const startIndex = (this.currentPage - 1) * this.pageSize;
+    return this.employees.slice(startIndex, startIndex + this.pageSize);
+  }
+
+  get totalPages(): number {
+    return Math.ceil(this.employees.length / this.pageSize);
+  }
+
+  changePage(page: number) {
+    if (page >= 1 && page <= this.totalPages) {
+      this.currentPage = page;
+    }
   }
 }

@@ -41,7 +41,7 @@ namespace ApiEndPoint.Controllers
         }
 
         [HttpDelete("delete-employee")]
-        public async Task<ActionResult<RemoveEmployeeResponse>> RemoveEmployee(EmployeeIdDto employeeIdDto)
+        public async Task<ActionResult<RemoveEmployeeResponse>> RemoveEmployee([FromQuery] EmployeeIdDto employeeIdDto)
         {
             var response = await removeEmployeeService.RemoveEmployeeAsync(employeeIdDto);
 
@@ -61,7 +61,7 @@ namespace ApiEndPoint.Controllers
         }
 
         [HttpGet("view-employee")]
-        public async Task<ActionResult<ViewEmployeeResponse>> ViewEmployee(EmployeeIdDto employeeIdDto)
+        public async Task<ActionResult<ViewEmployeeResponse>> ViewEmployee([FromQuery] EmployeeIdDto employeeIdDto)
         {
             var response = await viewEmployeeService.GetEmployeeAsync(employeeIdDto);
 

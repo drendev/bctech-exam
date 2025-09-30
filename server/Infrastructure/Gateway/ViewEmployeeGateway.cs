@@ -27,11 +27,11 @@ namespace Infrastructure.Gateway
                     Salary = e.Salary,
                     DepartmentId = e.DepartmentId,
                     DepartmentName = e.Department.Name!,
+                    IsActive = e.IsActive,
                     PersonalInfo = new PersonalInfoDto
                     {
                         FirstName = e.PersonalInfo.FirstName,
                         LastName = e.PersonalInfo.LastName,
-                        BirthDate = (DateTime)e.PersonalInfo.BirthDate!,
                         Gender = e.PersonalInfo.Gender,
                         Address = e.PersonalInfo.Address,
                         PhoneNumber = e.PersonalInfo.PhoneNumber,

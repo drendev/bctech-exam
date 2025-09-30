@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute, RouterModule } from '@angular/router';
 import { EmployeeService } from '../../../core/services/employee.service';
-import { Employee } from '../../../core/models/employee.model';
+import { Employee, ViewEmployee } from '../../../core/models/employee.model';
 
 @Component({
   selector: 'app-get-employee',
@@ -13,7 +13,7 @@ import { Employee } from '../../../core/models/employee.model';
 })
 export class GetEmployeeComponent implements OnInit {
   employeeId!: number;
-  employee?: Employee;
+  employee?: ViewEmployee;
   loading = false;
   error = '';
 

@@ -1,23 +1,60 @@
 <div *ngIf="loading">Loading employee...</div>
 
-<div *ngIf="!loading && employee">
+<div *ngIf="!loading && employee" class="form-container">
   <h2>Employee Details</h2>
-  <p><strong>Employee Status:</strong> {{ employee.isActive ? 'Yes' : 'No' }}</p>
-  <p><strong>Department:</strong> {{ employee.departmentId }}</p>
-  <p><strong>Job Title:</strong> {{ employee.jobTitle }}</p>
-  <p><strong>Salary:</strong> {{ employee.salary }}</p>
-  <div> Personal Information </div>
-  <p><strong>First Name:</strong> {{ employee.personalInfo.firstName }}</p>
-  <p><strong>Last Name:</strong> {{ employee.personalInfo.lastName }}</p>
-  <p><strong>Gender:</strong> {{ employee.personalInfo.gender }}</p>
-  <p><strong>Address:</strong> {{ employee.personalInfo.address }}</p>
-  <p><strong>Email:</strong> {{ employee.personalInfo.email }}</p>
-  <p><strong>Phone Number:</strong> {{ employee.personalInfo.phoneNumber }}</p>
+
+  <fieldset>
+    <legend>Employment Info</legend>
+    <div>
+      <label>Status:</label>
+      <span>{{ employee.isActive ? 'Active' : 'Inactive' }}</span>
+    </div>
+    <div>
+      <label>Department:</label>
+      <span>{{ employee.departmentName }}</span>
+    </div>
+    <div>
+      <label>Job Title:</label>
+      <span>{{ employee.jobTitle }}</span>
+    </div>
+    <div>
+      <label>Salary:</label>
+      <span>{{ employee.salary }}</span>
+    </div>
+  </fieldset>
+
+  <fieldset>
+    <legend>Personal Info</legend>
+    <div>
+      <label>First Name:</label>
+      <span>{{ employee.personalInfo.firstName }}</span>
+    </div>
+    <div>
+      <label>Last Name:</label>
+      <span>{{ employee.personalInfo.lastName }}</span>
+    </div>
+    <div>
+      <label>Gender:</label>
+      <span>{{ employee.personalInfo.gender }}</span>
+    </div>
+    <div>
+      <label>Address:</label>
+      <span>{{ employee.personalInfo.address }}</span>
+    </div>
+    <div>
+      <label>Email:</label>
+      <span>{{ employee.personalInfo.email }}</span>
+    </div>
+    <div>
+      <label>Phone Number:</label>
+      <span>{{ employee.personalInfo.phoneNumber }}</span>
+    </div>
+  </fieldset>
+
+  <div class="actions">
+    <button (click)="deleteEmployee()" class="btn-delete">Delete Employee</button>
+    <a [routerLink]="['/employee/edit', employeeId]">
+      <button class="btn-edit">Edit Employee</button>
+    </a>
+  </div>
 </div>
-
-<button (click)="deleteEmployee()" style="margin-top: 10px; background-color: red; color: white;">
-  Delete Employee
-</button>
-
-<a [routerLink]="['/employee/edit', employeeId]" style="margin-left: 10px;">
-  <button style="background-color: blue; color: white;">Edit Employee</button>

@@ -18,6 +18,17 @@ namespace Infrastructure.Providers
             b => b.MigrationsAssembly(typeof(ServiceContainer).Assembly.FullName)),
             ServiceLifetime.Scoped);
 
+            services.AddCors(options =>
+            {
+                options.AddPolicy("AllowAngularClient", policy =>
+                {
+                    policy.WithOrigins("http://localhost:4200")
+                          .AllowAnyHeader()
+                          .AllowAnyMethod()
+                          .AllowCredentials();
+                });
+            });
+
             services.AddScoped<IAddEmployeeService, AddEmployeeService>();
             services.AddScoped<IAddEmployeeRepository, AddEmployeeGateway>();
 

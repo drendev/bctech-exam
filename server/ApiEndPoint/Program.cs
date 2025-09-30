@@ -22,6 +22,8 @@ namespace ApiEndPoint
 
             app.MapControllers();
 
+            app.UseCors("AllowAngularClient");
+
             app.Run();
         }
     }

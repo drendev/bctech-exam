@@ -42,6 +42,7 @@ namespace Infrastructure.Gateway
                 JobTitle = employeeDto.JobTitle,
                 Salary = employeeDto.Salary,
                 DepartmentId = employeeDto.DepartmentId,
+                IsActive = employeeDto.IsActive,
                 PersonalInfo = new EmployeePersonalInfo
                 {
                     FirstName = employeeDto.PersonalInfo!.FirstName,

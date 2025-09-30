@@ -4,6 +4,8 @@ import { FormsModule } from '@angular/forms';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { EmployeeService } from '../../../core/services/employee.service';
 import { UpdateEmployee } from '../../../core/models/employee.model';
+import { Department } from '../../../core/models/department.model';
+import { DepartmentService } from '../../../core/services/department.service';
 
 @Component({
   selector: 'app-edit-employee',
@@ -29,6 +31,8 @@ export class EditEmployeeComponent implements OnInit {
       email: ''
     }
   };
+
+  departments: Department[] = [];
   loading = false;
   error = '';
   response = '';
@@ -36,10 +40,12 @@ export class EditEmployeeComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private employeeService: EmployeeService
+    private employeeService: EmployeeService,
+    private departmentService: DepartmentService
   ) {}
 
   ngOnInit() {
+    this.loadDepartments();
     this.employeeId = Number(this.route.snapshot.paramMap.get('id'));
     if (!this.employeeId) {
       this.error = 'Invalid Employee ID';
@@ -51,6 +57,13 @@ export class EditEmployeeComponent implements OnInit {
     this.fetchEmployee();
   }
 
+  loadDepartments() {
+    this.departmentService.viewDepartment().subscribe({
+      next: (res) => (this.departments = res.departments),
+      error: (err) => console.error('Failed to load departments', err)
+    });
+  }
+
   fetchEmployee() {
     this.loading = true;
     this.employeeService.viewEmployeeById(this.employeeId).subscribe({
@@ -59,7 +72,7 @@ export class EditEmployeeComponent implements OnInit {
         this.loading = false;
       },
       error: (err) => {
-        this.error = err.message || 'Failed to load employee';
+        this.error = err.error?.message || 'Failed to load employee';
         this.loading = false;
       }
     });

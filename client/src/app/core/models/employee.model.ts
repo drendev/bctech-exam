@@ -7,6 +7,7 @@ export interface Employee {
     departmentId: number | null;
     personalInfo: PersonalInfo;
 }
+
 export interface EmployeeListResponse {
     success: boolean;
     message: string;
@@ -29,7 +30,16 @@ export interface EmployeeId {
 export interface ViewEmployeeResponse {
     success: boolean;
     message: string;
-    employee: Employee;
+    employee: ViewEmployee;
+}
+
+export interface ViewEmployee {
+    jobTitle: string;
+    salary: number | null;
+    isActive: boolean;
+    departmentId: number | null;
+    personalInfo: PersonalInfo;
+    departmentName: string;
 }
 
 export interface UpdateEmployee {

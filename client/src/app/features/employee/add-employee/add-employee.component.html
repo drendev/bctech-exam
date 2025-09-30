@@ -1,26 +1,8 @@
+<h2>Add Employee</h2>
+  <div class="error">{{ response }}</div>
 <form (ngSubmit)="onSubmit()" class="form-container">
-  <div>
-    <label>Job Title:</label>
-    <input type="text" [(ngModel)]="employee.jobTitle" name="jobTitle" />
-  </div>
-
-  <div>
-    <label>Salary:</label>
-    <input type="number" [(ngModel)]="employee.salary" name="salary" />
-  </div>
-
-  <div>
-    <label>Active:</label>
-    <input type="checkbox" [(ngModel)]="employee.isActive" name="isActive" />
-  </div>
-
-  <div>
-    <label>Department ID:</label>
-    <input type="number" [(ngModel)]="employee.departmentId" name="departmentId" />
-  </div>
-
+  <fieldset>
     <legend>Personal Info</legend>
-
     <div>
       <label>First Name:</label>
       <input type="text" [(ngModel)]="employee.personalInfo.firstName" name="firstName" />
@@ -33,7 +15,10 @@
 
     <div>
       <label>Gender:</label>
-      <input type="text" [(ngModel)]="employee.personalInfo.gender" name="gender" />
+      <select [(ngModel)]="employee.personalInfo.gender" name="gender">
+        <option value="male">Male</option>
+        <option value="female">Female</option>
+      </select>
     </div>
 
     <div>
@@ -50,7 +35,45 @@
       <label>Email:</label>
       <input type="email" [(ngModel)]="employee.personalInfo.email" name="email" />
     </div>
-  <div>{{ response }}</div>
+    </fieldset>
+
+    <fieldset>
+    <legend>Employment Info</legend>
+  <div>
+    <label>Job Title:</label>
+    <input type="text" [(ngModel)]="employee.jobTitle" name="jobTitle" />
+  </div>
+
+  <div>
+    <label>Salary:</label>
+    <input type="number" [(ngModel)]="employee.salary" name="salary" required/>
+  </div>
+
+  <div>
+    <label>Status:</label>
+    <select [(ngModel)]="employee.isActive" name="isActive">
+      <option [ngValue]="true">Active</option>
+      <option [ngValue]="false">Inactive</option>
+    </select>
+  </div>
+
+  <div>
+    <label>Department:</label>
+
+    <div *ngIf="departments.length === 0; else departmentSelect">
+      <a routerLink="/department"> Please add a department. </a>
+    </div>
+
+    <ng-template #departmentSelect>
+      <select [(ngModel)]="employee.departmentId" name="departmentId" required>
+        <option [ngValue]="null" disabled selected>Select a department</option>
+        <option *ngFor="let dept of departments" [ngValue]="dept.departmentId">
+          {{ dept.name }}
+        </option>
+      </select>
+    </ng-template>
+  </div>
+  </fieldset>
 
   <button type="submit" [disabled]="loading">Add Employee</button>
 </form>

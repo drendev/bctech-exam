@@ -1,6 +1,5 @@
 ﻿
 using Application.Dto;
-using Domain.Models;
 
 namespace Application.Response
 {

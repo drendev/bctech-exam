@@ -53,6 +53,7 @@ namespace Infrastructure.Gateway
             employee.JobTitle = updateEmployeeDto.JobTitle;
             employee.Salary = updateEmployeeDto.Salary;
             employee.DepartmentId = updateEmployeeDto.DepartmentId;
+            employee.IsActive = updateEmployeeDto.IsActive;
 
             if (employee.PersonalInfo != null && updateEmployeeDto.PersonalInfo != null)
             {

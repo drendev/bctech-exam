@@ -1,14 +1,16 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { EmployeeService } from '../../../core/services/employee.service';
 import { Employee } from '../../../core/models/employee.model';
+import { Department } from '../../../core/models/department.model';
+import { DepartmentService } from '../../../core/services/department.service';
 
 @Component({
   selector: 'app-add-employee',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, RouterModule],
   templateUrl: './add-employee.component.html',
   styleUrls: ['./add-employee.component.scss']
 })
@@ -27,11 +29,22 @@ export class AddEmployeeComponent {
       email: ''
     }
   };
-
+  departments: Department[] = [];
   loading = false;
   response = '';
 
-  constructor(private employeeService: EmployeeService, private router: Router) {}
+  constructor(private employeeService: EmployeeService, private router: Router, private departmentService: DepartmentService) {}
+
+  ngOnInit() {
+    this.loadDepartments();
+  }
+
+  loadDepartments() {
+    this.departmentService.viewDepartment().subscribe({
+      next: (res) => (this.departments = res.departments),
+      error: (err) => console.error('Failed to load departments', err)
+    });
+  }
 
   onSubmit() {
     if (!this.employee.jobTitle.trim()) return this.fail('Job Title is required');

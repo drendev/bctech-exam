@@ -9,9 +9,6 @@ namespace Application.Dto
         public string? JobTitle { get; set; }
 
         [Required]
-        public DateTime HireDate { get; set; }
-
-        [Required]
         public decimal Salary { get; set; }
 
         [Required]
@@ -20,7 +17,7 @@ namespace Application.Dto
         [Required]
         public int DepartmentId { get; set; }
 
-        public string DepartmentName { get; set; } = "Test";
+        public string? DepartmentName { get; set; }
 
         [Required]
         public PersonalInfoDto? PersonalInfo { get; set; }
@@ -38,9 +35,6 @@ namespace Application.Dto
 
         [Required]
         public string? JobTitle { get; set; }
-
-        [Required]
-        public DateTime HireDate { get; set; }
 
         [Required]
         public decimal Salary { get; set; }

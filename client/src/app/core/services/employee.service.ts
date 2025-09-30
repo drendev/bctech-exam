@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Employee, EmployeeId, EmployeeListItem, EmployeeListResponse, UpdateEmployee, UpdateEmployeeResponse, ViewEmployeeResponse } from '../models/employee.model';
+import { Employee, EmployeeId, EmployeeListItem, EmployeeListResponse, UpdateEmployee, UpdateEmployeeResponse, ViewEmployee, ViewEmployeeResponse } from '../models/employee.model';
 import { map, Observable } from 'rxjs';
 import { AddEmployeeResponse } from '../responses/employee.responses';
 
@@ -24,7 +24,7 @@ export class EmployeeService {
       );
   }
 
-  viewEmployeeById(employeeId: number): Observable<Employee> {
+  viewEmployeeById(employeeId: number): Observable<ViewEmployee> {
     return this.http
       .get<ViewEmployeeResponse>(`${this.apiUrl}/view-employee`, {
         params: { employeeId: employeeId.toString() }

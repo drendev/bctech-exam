@@ -1,31 +1,42 @@
-
 <div class="container">
   <app-employee-header />
 
   <div *ngIf="loading">Loading employees...</div>
   <div *ngIf="error">{{ error }}</div>
-  <div class="table-wrapper">
+
+  <div class="table-wrapper" *ngIf="!loading && !error">
     <h2 class="table-title">Employees List</h2>
-  <table *ngIf="!loading && employees.length > 0" class="table-container">
-    <thead class="table-header">
-      <tr>
-        <th>First Name</th>
-        <th>Last Name</th>
-        <th>Department</th>
-        <th>Job Title</th>
-        <th>Actions</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let emp of employees" [routerLink]="['/employee/view', emp.employeeId]" style="cursor: pointer;">
-        <td>{{ emp.firstName }}</td>
-        <td>{{ emp.lastName }}</td>
-        <td>{{ emp.departmentName }}</td>
-        <td>{{ emp.jobTitle }}</td>
-        <td><div class="button">View</div></td>
-      </tr>
-    </tbody>
-  </table>
+
+    <table *ngIf="employees.length > 0; else noEmployees" class="table-container">
+      <thead class="table-header">
+        <tr>
+          <th>First Name</th>
+          <th>Last Name</th>
+          <th>Department</th>
+          <th>Job Title</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let emp of paginatedEmployees" [routerLink]="['/employee/view', emp.employeeId]" style="cursor: pointer;">
+          <td>{{ emp.firstName }}</td>
+          <td>{{ emp.lastName }}</td>
+          <td>{{ emp.departmentName }}</td>
+          <td>{{ emp.jobTitle }}</td>
+          <td><div class="button">View</div></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- pagination controls -->
+    <div class="pagination" *ngIf="totalPages > 1">
+      <button (click)="changePage(currentPage - 1)" [disabled]="currentPage === 1">Prev</button>
+      <span>Page {{ currentPage }} of {{ totalPages }}</span>
+      <button (click)="changePage(currentPage + 1)" [disabled]="currentPage === totalPages">Next</button>
+    </div>
+
+    <ng-template #noEmployees>
+      <div class="no-employees">No employees found.</div>
+    </ng-template>
   </div>
-  <div *ngIf="!error && employees.length === 0">No employees found.</div>
 </div>
