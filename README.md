@@ -1,7 +1,7 @@
 
 ├── client/   # Frontend (Angular)
-├── server/   # Backend (ASP.NET)
-└── README.md # Project documentation
+<br>├── server/   # Backend (ASP.NET)
+<br>└── README.md # Project documentation
 
 ### Configure Database (MSSQL)
 
