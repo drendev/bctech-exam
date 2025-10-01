@@ -19,26 +19,26 @@ namespace Infrastructure.Gateway
 
         public async Task<ViewDepartmentDto?> ViewAsync(DepartmentIdDto departmentIdDto)
         {
-            var department = await appDbContext.Departments
+            return await appDbContext.Departments
                 .Include(d => d.Employees)
                 .ThenInclude(e => e.PersonalInfo)
-                .FirstOrDefaultAsync(d => d.DepartmentId == departmentIdDto.DepartmentId);
-
-            var departmentDto = new ViewDepartmentDto
-            {
-                Name = department!.Name,
-                Location = department!.Location,
-                Employees = department!.Employees.Select(e => new EmployeesListDto
+                .Where(d => d.DepartmentId == departmentIdDto.DepartmentId)
+                .Select(d => new ViewDepartmentDto
                 {
-                    EmployeeId = e.EmployeeId,
-                    JobTitle = e.JobTitle,
-                    FirstName = e.PersonalInfo.FirstName,
-                    LastName = e.PersonalInfo.LastName,
-                    IsActive = e.IsActive
-                }).ToList()
-            };
-
-            return departmentDto;
+                    Name = d.Name,
+                    Location = d.Location,
+                    Employees = d.Employees.Select(emp => new EmployeesListDto
+                    {
+                        EmployeeId = emp.EmployeeId,
+                        FirstName = emp.PersonalInfo.FirstName,
+                        LastName = emp.PersonalInfo.LastName,
+                        DepartmentName = d.Name,
+                        JobTitle = emp.JobTitle,
+                        IsActive = emp.IsActive
+                    }).ToList()
+                })
+                .FirstOrDefaultAsync();
         }
+
     }
 }

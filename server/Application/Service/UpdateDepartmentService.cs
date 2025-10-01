@@ -1,5 +1,4 @@
-﻿
-using Application.Dto;
+﻿using Application.Dto;
 using Application.Interfaces;
 using Application.Response;
 
@@ -26,11 +25,17 @@ namespace Application.Service
             if (string.IsNullOrWhiteSpace(updateDepartmentDto.Name))
                 return new UpdateDepartmentResponse(false, "Department Name is required.");
 
+            if (updateDepartmentDto.Name.Length > 60)
+                return new UpdateDepartmentResponse(false, "Department Name cannot exceed 60 characters.");
+
             if (await repository.DepartmentExistAsync(updateDepartmentDto.DepartmentId, updateDepartmentDto.Name))
                 return new UpdateDepartmentResponse(false, "Department Name already exists.");
 
             if (string.IsNullOrWhiteSpace(updateDepartmentDto.Location))
                 return new UpdateDepartmentResponse(false, "Department Location is required.");
+
+            if (updateDepartmentDto.Location.Length > 100)
+                return new UpdateDepartmentResponse(false, "Department Location cannot exceed 100 characters.");
 
             return await repository.UpdateAsync(updateDepartmentDto);
         }

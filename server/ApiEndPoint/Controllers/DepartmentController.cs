@@ -49,7 +49,7 @@ namespace ApiEndPoint.Controllers
         }
 
         [HttpGet("view-department")]
-        public async Task<ActionResult<ViewDepartmentResponse>> ViewDepartment(DepartmentIdDto departmentIdDto)
+        public async Task<ActionResult<ViewDepartmentResponse>> ViewDepartment([FromQuery] DepartmentIdDto departmentIdDto)
         {
             var response = await viewDepartmentService.ViewDepartmentAsync(departmentIdDto);
 
