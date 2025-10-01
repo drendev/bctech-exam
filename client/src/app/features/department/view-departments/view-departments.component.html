@@ -1,0 +1,38 @@
+<app-department-header />
+<div class="container">
+
+  <div *ngIf="loading">Loading departments...</div>
+  <div *ngIf="error">{{ error }}</div>
+
+  <div class="table-wrapper" *ngIf="!loading && !error">
+    <h2 class="table-title">Departments List</h2>
+
+    <table *ngIf="departments.length > 0; else noDepartments" class="table-container">
+      <thead class="table-header">
+        <tr>
+          <th>Department Name</th>
+          <th>Location</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let dept of paginatedDepartments" [routerLink]="['/department/view', dept.departmentId]" style="cursor: pointer;">
+          <td>{{ dept.name }}</td>
+          <td>{{ dept.location }}</td>
+          <td><div class="button">View Employees</div></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- pagination -->
+    <div class="pagination" *ngIf="totalPages > 1">
+      <button (click)="changePage(currentPage - 1)" [disabled]="currentPage === 1">Prev</button>
+      <span>Page {{ currentPage }} of {{ totalPages }}</span>
+      <button (click)="changePage(currentPage + 1)" [disabled]="currentPage === totalPages">Next</button>
+    </div>
+    
+    <ng-template #noDepartments>
+      <div class="no-employees">No departments found.</div>
+    </ng-template>
+  </div>
+</div>

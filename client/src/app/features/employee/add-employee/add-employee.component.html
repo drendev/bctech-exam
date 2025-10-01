@@ -61,7 +61,7 @@
     <label>Department:</label>
 
     <div *ngIf="departments.length === 0; else departmentSelect">
-      <a routerLink="/department"> Please add a department. </a>
+      <a routerLink="/department/add" class="add-link"> Please add a department. </a>
     </div>
 
     <ng-template #departmentSelect>

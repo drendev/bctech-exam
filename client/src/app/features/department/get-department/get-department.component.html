@@ -1,0 +1,51 @@
+<div *ngIf="loading">Department not Found.</div>
+
+<div *ngIf="!loading && department" class="form-container">
+  <h2>Department Details</h2>
+
+  <div class="department-name">
+    <h2>{{ department.department.name }}</h2>
+  </div>
+  <div class="department-location">
+    <label>Location:</label>
+    <span>{{ department.department.location }}</span>
+  </div>
+
+  <div class="edit-button" *ngIf="department.department.employees.length > 0">
+    <a [routerLink]="['/department/edit', departmentId]" class="edit-link">
+      Edit Department
+    </a>
+  </div>
+
+  <div class="table-wrapper" style="margin-top: 20px;" *ngIf="department.department.employees.length > 0; else noEmployees">
+    <h2 class="table-title">Employees</h2>
+
+    <table class="table-container">
+      <thead class="table-header">
+        <tr>
+          <th>First Name</th>
+          <th>Last Name</th>
+          <th>Job Title</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let emp of department.department.employees"
+            [routerLink]="['/employee/view', emp.employeeId]"
+            class="table-row"
+            style="cursor: pointer;">
+          <td>{{ emp.firstName }}</td>
+          <td>{{ emp.lastName }}</td>
+          <td>{{ emp.jobTitle }}</td>
+          <td>{{ emp.isActive ? 'Active' : 'Inactive' }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <ng-template #noEmployees>
+    <h1 class="no-employees">Employees Not Found</h1>
+  </ng-template>
+</div>
+
+<div *ngIf="error" class="error">{{ error }}</div>
