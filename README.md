@@ -3,39 +3,40 @@
 <br>├── server/   # Backend (ASP.NET)
 <br>└── README.md # Project documentation
 
-### Configure Database (MSSQL)
+# Configure Server Side
 
-1. Create a local database in SQL Server Management Studio
+1. Open VSCode
 
-2. Edit the Connection strings in server/ApiEndpoint/appsettings.json
+2. Open Project Solution (server.sln)
 
-### Running the Backend Server
+3. Create a new database in SQL Server Management
 
-1. Navigate to server folder
- 
- cd server
+4. Configure Connection Strings at (ApiEndPoint/appsettings.json)
 
-2. Restore the dependencies
+5. Update the database with developer powershell or terminal.
+    #### dotnet ef database update --project Infrastructure --startup-project ApiEndpoint
 
- dotnet restore
+6. Restore the dependencies
+    #### dotnet restore
 
-3. Run the Server
-
- dotnet run
-
-4. Check if the the Web API is running on https://localhost:7097/
+7. Run the Server and check if its running on https://localhost:7097/
+    #### dotnet run
 
 
-### Running the Frontend
+# Configure Client Side
 
 1. Navigate to client server
 
- cd client
+    #### cd client
 
 2. Install the dependencies
 
- npm install
+    #### npm install
 
 3. Run the Client
 
- npm run dev
+    #### ng serve
+
+# NOTE:
+
+### Please add a department first before adding an employee since its a relational database. But you can still test the add employee without a department first :)
